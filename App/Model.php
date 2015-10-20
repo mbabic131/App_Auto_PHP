@@ -4,6 +4,7 @@ include 'DB_Conn.php';
 
 class Model {
 
+    //public vars for storing data
     protected $_db;
 
     public $naziv;
@@ -145,6 +146,7 @@ class Model {
         }
     }
 
+    //retrive data from autosave table and limit rows for pagination
     function readAll($from_record_num, $records_per_page){
 
         $query = "SELECT
@@ -159,6 +161,7 @@ class Model {
         $this->allRows = $stmt;
     }
 
+    //count rows for pagination
     public function countAll() {
 
         $query = "SELECT id From autosave";
