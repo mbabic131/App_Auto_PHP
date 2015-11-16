@@ -13,7 +13,7 @@
 </script>
 
 <div class="col-lg-7">
-    <button class="btn btn-default" id="opis">O aplikaciji
+    <button class="btn btn-default" id="opis">About App
         <span class="caret"></span>
         <span class="sr-only">Toggle Dropdown</span>
     </button>
@@ -23,11 +23,11 @@
 
 <div class="col-lg-7" id="tijelo">
 <div class="panel panel-info">
-    <div class="panel-heading">Opis aplikacije</div>
+    <div class="panel-heading">App description</div>
     <div class="panel-body">
-        <p>Aplikacija omogućava okviran izračun godišnjih troškova energenata za pojedine automobile.<br />
-        Cilj je omogučiti usporedbu troškova između benzinskih, dizelskih, hibridnih i električnih vozila, <br />
-        te utvrditi koji tip pogona je najisplativiji.</p>
+        <p>The application allows users to perform calculations of the annual costs for fuel for certain car.
+            The goal is to enable comparison between the cost of gasoline, diesel, hybrid and electric vehicles and
+            to determine which type of drive is the most cost-effective.</p>
     </div>
 </div>
 </div>
@@ -36,9 +36,9 @@
     <form action="?o=view" name="mojaforma" class="form-horizontal" method="post">
 
         <div class="form-group">
-            <h3 class="col-sm-offset-2">Izaberite automobil:</h3>
+            <h3 class="col-sm-offset-2">Choose a car:</h3>
             <br />
-            <label for="auto" class="col-sm-5 control-label">Automobil:</label>
+            <label for="auto" class="col-sm-5 control-label">Car:</label>
             <div class="col-sm-5">
                 <select name='auto' class='form-control'>
                     <?php
@@ -58,7 +58,7 @@
 
         <div class="form-group">
             <div class="col-sm-offset-5 col-sm-10">
-                <button type="submit" class="btn btn-primary">Dalje</button>
+                <button type="submit" class="btn btn-primary">Next =></button>
             </div>
         </div>
 

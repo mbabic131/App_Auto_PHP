@@ -8,13 +8,13 @@ $row = $controller->model->oneRow;
 extract($row);
 
 echo "<div id='tablice'>";
-    echo "<h3>Podaci o automobilu:</h3>";
+    echo "<h3>About car:</h3>";
     echo "<table class='table table-bordered'>";
         echo "<tr class='active'>";
-            echo "<th>Naziv automobila</th>";
-            echo "<th>Pogon</th>";
-            echo "<th>Jedinica mjere</th>";
-            echo "<th>Prosječna potrošnja</th>";
+            echo "<th>Car model</th>";
+            echo "<th>Drive</th>";
+            echo "<th>Unit</th>";
+            echo "<th>Average fuel consumption</th>";
         echo "</tr>";
         echo "<tr class='success'>";
             echo "<td>$Naziv</td>";
@@ -30,12 +30,12 @@ if($Tip) {
     $row2 = $controller->model->oneTip;
     extract($row2);
 
-        echo "<h3>Podaci o energentu:</h3>";
+        echo "<h3>About drive:</h3>";
         echo "<table class='table table-bordered'>";
             echo "<tr class='active'>";
-                echo "<th>Energent</th>";
-                echo "<th>Jedinica mjere</th>";
-                echo "<th>Cijena (KN)</th>";
+                echo "<th>Drive</th>";
+                echo "<th>Unit</th>";
+                echo "<th>Price ($)</th>";
             echo "</tr>";
             echo "<tr class='info'>";
                 echo "<td>$Pogon</td>";
@@ -53,14 +53,14 @@ echo "</form>";
 ?>
 
 <dl>
-    <dt>Broj prijeđenih kilometara</dt>
-    <dd>Ovdje upišite prosječan broj kilometara koje godišnje prijeđete s vlastitim automobilom.</dd>
+    <dt>Annual mileage</dt>
+    <dd>Enter the average annual number of kilometers that you cross by car.</dd>
 </dl>
 
 <div id="forma">
     <form name="forma" class="form-horizontal" method="post" action="View.php?m=save">
         <div class="form-group">
-            <label for="kmh" class="col-sm-2 control-label">Iznos</label>
+            <label for="kmh" class="col-sm-2 control-label">Amount</label>
                  <div class="input-group col-sm-5">
                     <input type="text" id="kmh" name="kilometar" class="form-control">
                     <div class="input-group-addon">KM</div>
@@ -69,20 +69,20 @@ echo "</form>";
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <input type="button" value="Izračunaj" class="btn btn-primary" onclick="calc()">
+                <input type="button" value="Calculate" class="btn btn-primary" onclick="calc()">
             </div>
         </div>
 
         <dl>
-            <dt>Ukupni troškovi prijevoza</dt>
-            <dd>Ovdje su prikazani ukupni godišnji troškovi prijevoza za izabrani automobil.</dd>
+            <dt>Total costs</dt>
+            <dd>Here are the total annual fuel cost of the selected car.</dd>
         </dl>
 
         <div class="form-group">
-            <label for="trosak" class="col-sm-2 control-label">Trošak</label>
+            <label for="trosak" class="col-sm-2 control-label">Cost</label>
                 <div class="input-group col-sm-5">
                      <input type="text" id="trosak" name="ukupniTroskovi" class="form-control">
-                     <div class="input-group-addon">KN</div>
+                     <div class="input-group-addon">$</div>
                     <?php
                         echo "<input type='hidden' name='ime' value='$Naziv'>";
                         echo "<input type='hidden' name='pogon' value='$Tip'>";
@@ -92,7 +92,7 @@ echo "</form>";
 
         <div class="form-group">
             <div class='col-sm-offset-2 col-sm-10'>
-                <input type='submit' value='Spremi' class='btn btn-primary'>
+                <input type='submit' value='Save' class='btn btn-primary'>
             </div>
         </div>
     </form>

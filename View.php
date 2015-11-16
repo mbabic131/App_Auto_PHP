@@ -16,7 +16,7 @@ if($_GET['m'] == 'save') {
 
     echo "<div class=\"alert alert-success alert-dismissable\">";
     echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
-    echo "Podaci su spremljeni.";
+    echo "Saved to database.";
     echo "</div>";
 }
 elseif ($_GET['m'] == 'delete') {
@@ -26,7 +26,7 @@ elseif ($_GET['m'] == 'delete') {
 
     echo "<div class=\"alert alert-success alert-dismissable\">";
     echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
-    echo "Podaci su obrisani.";
+    echo "Row is deleted from database.";
     echo "</div>";
 }
 
@@ -40,7 +40,7 @@ elseif ($_GET['m'] == 'edit') {
 
     echo "<div class=\"alert alert-success alert-dismissable\">";
     echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>";
-    echo "Podaci su izmjenjeni.";
+    echo "Row is updated.";
     echo "</div>";
 }
 
@@ -54,11 +54,11 @@ echo "<div>";
 echo "<table class='table table-bordered table-hover'>";
 echo "<tr>";
     echo "<th>ID</th>";
-    echo "<th>Naziv automobila</th>";
-    echo "<th>Pogon</th>";
-    echo "<th>Broj prijeđenih kilometara</th>";
-    echo "<th>Ukupni troškovi (KN)</th>";
-    echo "<th></th>";
+    echo "<th>Car model</th>";
+    echo "<th>Drive</th>";
+    echo "<th>Annual mileage</th>";
+    echo "<th>Tottal costs ($)</th>";
+    echo "<th>#</th>";
 echo "</tr>";
 while ($row = $rows->fetch(PDO::FETCH_ASSOC)) {
     extract($row);
@@ -81,7 +81,7 @@ include_once 'Paginacija.php';
 
 }
 else{
-    echo "<div>Nema podataka u bazi.</div>";
+    echo "<div>No data in database.</div>";
 }
 
 include 'footer.php';
