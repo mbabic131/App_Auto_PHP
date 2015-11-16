@@ -1,8 +1,5 @@
 <?php
 
-include 'App/Controller.php';
-include 'header.php';
-
 //retrive id of selected row and send data to Controller class 
 $id = $_GET['id'];
 $conn = new Controller();
@@ -14,7 +11,7 @@ $conn->SetToUpdate();
 <h3>Update data:</h3>
 <br />
 
-<form name="update_forma" action="View.php?id=<?php echo $id; ?>&m=edit" method="post" class="form-horizontal">
+<form name="update_forma" action="index.php?o=show_data&id=<?php echo $id; ?>&m=edit" method="post" class="form-horizontal">
 
     <div class="form-group">
         <label for="auto" class="col-sm-2 control-label">Car model</label>
@@ -51,7 +48,3 @@ $conn->SetToUpdate();
     </div>
 
 </form>
-
-<?php
-
-include 'footer.php';

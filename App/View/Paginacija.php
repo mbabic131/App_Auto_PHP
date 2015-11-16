@@ -1,6 +1,6 @@
 <?php
 
-$page_dom = "View.php";
+$page_dom = "index.php?o=show_data";
 
 echo "<ul class=\"pagination\">";
 
@@ -29,13 +29,13 @@ for ($x=$initial_num; $x<$condition_limit_num; $x++) {
         }
 
         else {
-            echo "<li><a href='{$page_dom}?page=$x'>$x</a></li>";
+            echo "<li><a href='{$page_dom}&page=$x'>$x</a></li>";
         }
     }
 }
 
 if($page<$total_pages){
-    echo "<li><a href='" .$page_dom . "?page={$total_pages}' title='Last page is {$total_pages}.'>";
+    echo "<li><a href='" .$page_dom . "&page={$total_pages}' title='Last page is {$total_pages}.'>";
     echo ">>";
     echo "</a></li>";
 }

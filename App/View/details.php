@@ -58,7 +58,7 @@ echo "</form>";
 </dl>
 
 <div id="forma">
-    <form name="forma" class="form-horizontal" method="post" action="View.php?m=save">
+    <form name="forma" class="form-horizontal" method="post" action="index.php?o=show_data&m=save">
         <div class="form-group">
             <label for="kmh" class="col-sm-2 control-label">Amount</label>
                  <div class="input-group col-sm-5">

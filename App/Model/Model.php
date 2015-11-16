@@ -1,6 +1,6 @@
 <?php
 
-include 'DB_Conn.php';
+include 'App/DB/DB_Conn.php';
 
 class Model {
 

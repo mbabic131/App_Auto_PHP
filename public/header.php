@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script type="text/javascript" src="JS/izracun.js"></script>
-    <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="CSS/CSS.css" rel="stylesheet">
-    <script type="text/javascript" src="JS/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="public/JS/izracun.js"></script>
+    <link href="public/CSS/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="public/CSS/CSS.css" rel="stylesheet">
+    <script type="text/javascript" src="public/JS/jquery-1.9.1.js"></script>
     <title>Fuel costs</title>
 </head>
 <body>
@@ -22,7 +22,7 @@
 <nav class="navbar">
     <ul class="nav nav-tabs">
          <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-         <li><a href="View.php"><span class="glyphicon glyphicon-th"></span> Data</a></li>
+         <li><a href="index.php?o=show_data"><span class="glyphicon glyphicon-th"></span> Data</a></li>
     </ul>
 </nav>
 

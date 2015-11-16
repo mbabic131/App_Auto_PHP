@@ -1,8 +1,5 @@
 <?php
 
-include 'App/Controller.php';
-include 'header.php';
-
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 
 $records_per_page = 5;
@@ -69,8 +66,8 @@ while ($row = $rows->fetch(PDO::FETCH_ASSOC)) {
             echo "<td>{$Broj_kmh}</td>";
             echo "<td>{$Ukupni_troskovi}</td>";
             echo "<td>";
-                echo "<a href='Delete.php?id={$id}&o=ask'><span class='glyphicon glyphicon-remove'></span> DEL</a> | ";
-                echo "<a href='Update.php?id={$id}&o=upd'><span class='glyphicon glyphicon-edit'></span> EDIT</a>";
+                echo "<a href='index.php?id={$id}&o=ask'><span class='glyphicon glyphicon-remove'></span> DEL</a> | ";
+                echo "<a href='index.php?id={$id}&o=upd'><span class='glyphicon glyphicon-edit'></span> EDIT</a>";
             echo "</td>";
         echo "</tr>";
 };
@@ -83,5 +80,3 @@ include_once 'Paginacija.php';
 else{
     echo "<div>No data in database.</div>";
 }
-
-include 'footer.php';

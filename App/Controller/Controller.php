@@ -1,6 +1,6 @@
 <?php
 
-include 'Model.php';
+include 'App/Model/Model.php';
 
 class Controller {
 
