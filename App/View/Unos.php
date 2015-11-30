@@ -1,19 +1,19 @@
 <script type="text/javascript">
 
     $(document).ready(function() {
-        $("#tijelo").hide();
+        $("#body").hide();
     });
 
     $(document).ready(function() {
-        $("#opis").click(function() {
-            $("#tijelo").toggle();
+        $("#about").click(function() {
+            $("#body").toggle();
         });
     });
 
 </script>
 
 <div class="col-lg-7">
-    <button class="btn btn-default" id="opis">About App
+    <button class="btn btn-default" id="about">About App
         <span class="caret"></span>
         <span class="sr-only">Toggle Dropdown</span>
     </button>
@@ -21,7 +21,7 @@
 
 <br /><br />
 
-<div class="col-lg-7" id="tijelo">
+<div class="col-lg-7" id="body">
 <div class="panel panel-info">
     <div class="panel-heading">App description</div>
     <div class="panel-body">
@@ -58,7 +58,7 @@
 
         <div class="form-group">
             <div class="col-sm-offset-5 col-sm-10">
-                <button type="submit" class="btn btn-primary">Next =></button>
+                <button type="submit" class="btn btn-primary">Next</button>
             </div>
         </div>
 

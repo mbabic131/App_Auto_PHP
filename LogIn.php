@@ -10,12 +10,12 @@
 	<title>Log In</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="public/CSS/bootstrap.min.css" rel="stylesheet" media="screen">
 
     <!-- Custom styles for this template -->
-    <link href="CSS/Login_CSS.css" rel="stylesheet">
+    <link href="public/CSS/Login_CSS.css" rel="stylesheet">
 
-    <script src="JS/bootstrap.min.js"></script>
+    <script src="public/JS/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -34,6 +34,11 @@
           </label>
         </div>
         	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+            <div>
+                <h3>Or</h3>
+                <a href="#"><button class="btn btn-lg btn-primary btn-block">Register</button></a>
+            </div>
       </form>
 
     </div> <!-- /container -->

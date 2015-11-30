@@ -1,8 +1,8 @@
 <?php
 
-$naziv = $_POST['auto'];
+$name = $_POST['auto'];
 $controller = new Controller();
-$controller->naziv = $naziv;
+$controller->name = $name;
 $controller->getOne();
 $row = $controller->model->oneRow;
 extract($row);
@@ -25,9 +25,9 @@ echo "<div id='tablice'>";
     echo "</table>";
 
 if($Tip) {
-    $controller->tip = $Tip;
-    $controller->getTip();
-    $row2 = $controller->model->oneTip;
+    $controller->type = $Tip;
+    $controller->getType();
+    $row2 = $controller->model->oneType;
     extract($row2);
 
         echo "<h3>About drive:</h3>";

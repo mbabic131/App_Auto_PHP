@@ -4,20 +4,21 @@ include 'App/DB/DB_Conn.php';
 
 class Model {
 
-    //public vars for storing data
+    //database connection
     protected $_db;
 
-    public $naziv;
+    //public vars for storing data
+    public $name;
     public $oneRow;
 
-    public $tip;
-    public $oneTip;
+    public $type;
+    public $oneType;
 
     public $id;
     public $kmh;
     public $cost;
-    public $ime;
-    public $pogon;
+    public $car;
+    public $drive;
 
     public $allRows;
 
@@ -27,7 +28,7 @@ class Model {
     }
 
     //retrive all cars from table auti and save data to public var $oneRow
-    public function getNaziv() {
+    public function getName() {
 
         $query = "SELECT Naziv FROM auti";
 
@@ -43,7 +44,7 @@ class Model {
         $query = "SELECT ID, Naziv, Tip, JM, Potrosnja FROM auti WHERE Naziv = ?";
 
         $stmt = $this->_db->prepare($query);
-        $stmt->bindParam(1, $this->naziv);
+        $stmt->bindParam(1, $this->name);
         $stmt->execute();
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -51,16 +52,16 @@ class Model {
     }
 
     //retrive data about drive option for selected car from table energenti and save data to public var $oneTip
-    public function readTip() {
+    public function readType() {
 
         $query = "SELECT Pogon, JM, Cijena FROM energenti WHERE Pogon = ?";
 
         $stmt = $this->_db->prepare($query);
-        $stmt->bindParam(1, $this->tip);
+        $stmt->bindParam(1, $this->type);
         $stmt->execute();
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        $this->oneTip = $row;
+        $this->oneType = $row;
     }
 
     //retrive data about selected car from autosave table and send data to public vars
@@ -75,8 +76,8 @@ class Model {
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         extract($row);
 
-        $this->ime = $Automobil;
-        $this->pogon = $Pogon;
+        $this->car = $Automobil;
+        $this->drive = $Pogon;
         $this->kmh = $Broj_kmh;
         $this->cost = $Ukupni_troskovi;
     }
@@ -87,8 +88,8 @@ class Model {
         $query = "INSERT INTO autosave SET Automobil = ?, Pogon = ?, Broj_kmh = ?, Ukupni_troskovi = ?";
 
         $stmt = $this->_db->prepare($query);
-        $stmt->bindParam(1, $this->ime);
-        $stmt->bindParam(2, $this->pogon);
+        $stmt->bindParam(1, $this->car);
+        $stmt->bindParam(2, $this->drive);
         $stmt->bindParam(3, $this->kmh);
         $stmt->bindParam(4, $this->cost);
 
@@ -133,8 +134,8 @@ class Model {
 
         $stmt = $this->_db->prepare($query);
 
-        $stmt->bindParam(':Automobil', $this->ime);
-        $stmt->bindParam(':Pogon', $this->pogon);
+        $stmt->bindParam(':Automobil', $this->car);
+        $stmt->bindParam(':Pogon', $this->drive);
         $stmt->bindParam(':Broj_kmh', $this->kmh);
         $stmt->bindParam(':Ukupni_troskovi', $this->cost);
         $stmt->bindParam(':id', $this->id);

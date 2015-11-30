@@ -74,7 +74,7 @@ while ($row = $rows->fetch(PDO::FETCH_ASSOC)) {
 echo "</table>";
 echo "</div>";
 
-include_once 'Paginacija.php';
+include_once 'Pagination.php';
 
 }
 else{

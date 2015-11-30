@@ -1,5 +1,6 @@
 <?php
 
+//get id from URL
 $id = $_GET['id'];
 
 //message for delete confirmation
