@@ -1,5 +1,4 @@
 <?php
-
 include 'App/Model/Model.php';
 
 class Controller {
@@ -22,6 +21,48 @@ class Controller {
         //instatitation of new Model object
         $this->model = new Model();
     }
+
+    public function login_user($user, $pass) {
+
+        $login = $this->model->login($user, $pass);
+
+        if($login) {
+
+            $_SESSION['username'] = $user;
+            header("Location: index.php");
+
+        } else {
+
+            echo "<div class='alert alert-danger col-md-6 col-md-offset-3'><strong>Login failed!</strong> 
+                    Wrong username or password.</div>";
+        }
+    }
+
+    public function register_user($user, $pass, $pass_confirm) {
+
+        if($pass == $pass_confirm) {
+
+            $register = $this->model->register($user, $pass);
+
+            if($register) {
+
+                echo "<div class='col-md-6 col-md-offset-3'>
+                        <p>You have been register. You may now login <a href='index.php?o=login'>here</a></p>
+                    </div>";
+
+            } else {
+
+                echo "<div class='alert alert-danger col-md-6 col-md-offset-3'><strong>Registration failed</strong> 
+                        Please try again.</div>";
+            }
+
+        } else {
+
+                echo "<div class='alert alert-danger col-md-6 col-md-offset-3'><strong>Password mismatch</strong> 
+                        Check if your password matches in both fields.</div>";
+        } 
+    }
+
 
     //function that calls getname() from Model class, returns a list of all cars in a database
     public function getName() {

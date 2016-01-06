@@ -27,6 +27,49 @@ class Model {
         $this->_db = DB_Conn::getConnection();
     }
 
+    public function login($user, $pass) {
+
+        $query = "SELECT username, password FROM users WHERE username = ?";
+        $stmt = $this->_db->prepare($query);
+        $stmt->bindParam(1, $user);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $hash = $row['password'];
+
+        if($row['username'] == $user && password_verify($pass, $hash)) {
+
+            return true;
+
+        } else {
+
+            return false;
+        }
+    }
+
+    public function register($username, $password) {
+
+        $options = [
+            'cost' => 10,
+        ];
+
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT, $options);
+
+        $query = "INSERT INTO users SET username = ?, password = ?";
+        $stmt = $this->_db->prepare($query);
+        $stmt->bindParam(1, $username);
+        $stmt->bindParam(2, $hashed_password);
+
+        if($stmt->execute()) {
+
+            return true;
+            
+        } else {
+
+            return false;
+        }
+    }
+
     //retrive all cars from table auti and save data to public var $oneRow
     public function getName() {
 

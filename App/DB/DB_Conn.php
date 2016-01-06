@@ -6,7 +6,7 @@ class DB_Conn {
     private static $host = "127.0.0.1";
     private static $db_name = "auto_baza";
     private static $username = "root";
-    private static $password = "";
+    private static $password = "miro4471";
     private static $conn;
 
     static public function getConnection(){
