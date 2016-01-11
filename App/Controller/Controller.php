@@ -91,7 +91,7 @@ class Controller {
         $this->car = validate_input($_POST['ime']);
         $this->drive = validate_input($_POST['pogon']);
 
-        if(validate_numbers_input($this->kmh, 1, 50) == false && validate_numbers_input($this->cost, 1, 50) == false) {
+        if(validate_numbers_input($this->kmh, 1, 100000000000) == false && validate_numbers_input($this->cost, 1, 100000000000) == false) {
             
             return false;
             
@@ -149,17 +149,11 @@ class Controller {
     //retrive data from user input and send data to Model class and call updateRow() function
     public function update() {
         
-        $this->kmh = validate_input($_POST['kilometar']);
-        $this->cost = validate_input( $_POST['ukupniTroskovi']);
-        $this->car = validate_input($_POST['ime']);
-        $this->drive = validate_input($_POST['pogon']);
+        $this->model->kmh = validate_input($_POST['car_kmh']);
+        $this->model->cost = validate_input( $_POST['car_costs']);
+        $this->model->car = validate_input($_POST['car_name']);
+        $this->model->drive = validate_input($_POST['car_drive']);
 
-        if(validate_numbers_input($this->kmh, 1, 50) == false && validate_numbers_input($this->cost, 1, 50) == false) {
-            
-            return false;
-            
-        } else {
-        
             $update = $this->model->updateRow(); //function that updates row
 
             if($update) {
@@ -170,6 +164,5 @@ class Controller {
 
                 return false;
             }
-        }
     }
 }

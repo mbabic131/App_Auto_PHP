@@ -196,6 +196,7 @@ class Model {
         if($stmt->execute()) {
 
             return true;
+            
         } else {
 
             return false;
