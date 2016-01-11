@@ -1,5 +1,6 @@
 <?php
 include 'App/Model/Model.php';
+include 'App/Helpers/validation.php';
 
 class Controller {
 
@@ -46,7 +47,7 @@ class Controller {
 
             if($register) {
 
-                echo "<div class='col-md-6 col-md-offset-3'>
+                echo "<div class='col-md-6 col-md-offset-3 bg-success'>
                         <p>You have been register. You may now login <a href='index.php?o=login'>here</a></p>
                     </div>";
 
@@ -84,17 +85,32 @@ class Controller {
 
     //retrieve data from user input, send data to Model class and call save_info() function 
     public function setInfo() {
-        $this->kmh = htmlspecialchars($_POST['kilometar']);
-        $this->cost = htmlspecialchars( $_POST['ukupniTroskovi']);
-        $this->car = $_POST['ime'];
-        $this->drive = $_POST['pogon'];
+        
+        $this->kmh = validate_input($_POST['kilometar']);
+        $this->cost = validate_input( $_POST['ukupniTroskovi']);
+        $this->car = validate_input($_POST['ime']);
+        $this->drive = validate_input($_POST['pogon']);
 
-        $this->model->cost = $this->cost;
-        $this->model->kmh = $this->kmh;
-        $this->model->car = $this->car;
-        $this->model->drive = $this->drive;
+        if(validate_numbers_input($this->kmh, 1, 50) == false && validate_numbers_input($this->cost, 1, 50) == false) {
+            
+            return false;
+            
+        } else {
+            
+            $this->model->cost = $this->cost;
+            $this->model->kmh = $this->kmh;
+            $this->model->car = $this->car;
+            $this->model->drive = $this->drive;
 
-        $this->model->save_info();
+            if($this->model->save_info()) {
+
+                return true;
+                
+            } else {
+
+                return false;
+            }
+        }
     }
 
     //function that call readAll() from Model class, retrive all data from table autosave
@@ -106,7 +122,16 @@ class Controller {
     //delete a row in a autosave table
     public function delete() {
         $this->model->id = $this->id; //id of row to be deleted
-        $this->model->deleteRow();
+
+        $delete = $this->model->deleteRow();
+
+        if($delete) {
+
+            return true;
+        } else {
+
+            return false;
+        }
     }
 
     //retrieve data of a row to be updated
@@ -114,6 +139,7 @@ class Controller {
         $this->model->id = $this->id; //id or row to be updated
 
         $this->model->getInfoById(); 
+        
         $this->car = $this->model->car;
         $this->drive = $this->model->drive;
         $this->kmh = $this->model->kmh;
@@ -122,11 +148,28 @@ class Controller {
 
     //retrive data from user input and send data to Model class and call updateRow() function
     public function update() {
-        $this->model->kmh = $_POST['car_kmh'];
-        $this->model->cost = $_POST['car_costs'];
-        $this->model->car = $_POST['car_name'];
-        $this->model->drive = $_POST['car_drive'];
+        
+        $this->kmh = validate_input($_POST['kilometar']);
+        $this->cost = validate_input( $_POST['ukupniTroskovi']);
+        $this->car = validate_input($_POST['ime']);
+        $this->drive = validate_input($_POST['pogon']);
 
-        $this->model->updateRow(); //function that updates row
+        if(validate_numbers_input($this->kmh, 1, 50) == false && validate_numbers_input($this->cost, 1, 50) == false) {
+            
+            return false;
+            
+        } else {
+        
+            $update = $this->model->updateRow(); //function that updates row
+
+            if($update) {
+
+                return true;
+
+            } else {
+
+                return false;
+            }
+        }
     }
 }

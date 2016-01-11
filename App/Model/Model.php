@@ -128,17 +128,25 @@ class Model {
     //save data into table autosave 
     public function save_info() {
 
-        $query = "INSERT INTO autosave SET Automobil = ?, Pogon = ?, Broj_kmh = ?, Ukupni_troskovi = ?";
+        $query = "INSERT INTO autosave SET user_id = ?, Automobil = ?, Pogon = ?, Broj_kmh = ?, Ukupni_troskovi = ?";
 
         $stmt = $this->_db->prepare($query);
-        $stmt->bindParam(1, $this->car);
-        $stmt->bindParam(2, $this->drive);
-        $stmt->bindParam(3, $this->kmh);
-        $stmt->bindParam(4, $this->cost);
 
-        if($stmt->execute()){
+        $username = $_SESSION['username'];
+        $user_id = $this->get_user_id($username);
+
+        $stmt->bindParam(1, $user_id);
+        $stmt->bindParam(2, $this->car);
+        $stmt->bindParam(3, $this->drive);
+        $stmt->bindParam(4, $this->kmh);
+        $stmt->bindParam(5, $this->cost);
+
+        if($stmt->execute()) {
+
             return true;
-        }else{
+
+        } else {
+
             return false;
         }
     }
@@ -163,8 +171,10 @@ class Model {
         $stmt->bindParam(1, $this->id);
 
         if($result = $stmt->execute()) {
+
             return true;
         } else {
+
             return false;
         }
     }
@@ -184,8 +194,10 @@ class Model {
         $stmt->bindParam(':id', $this->id);
 
         if($stmt->execute()) {
+
             return true;
         } else {
+
             return false;
         }
     }
@@ -193,24 +205,51 @@ class Model {
     //retrive data from autosave table and limit rows for pagination
     function readAll($from_record_num, $records_per_page){
 
+        $username = $_SESSION['username'];
+        $user_id = $this->get_user_id($username);
+
         $query = "SELECT
                     id, Automobil, Pogon, Broj_kmh, Ukupni_troskovi
-            FROM autosave
+            FROM autosave WHERE user_id = ? 
             LIMIT
                 {$from_record_num}, {$records_per_page}";
 
         $stmt = $this->_db->prepare($query);
+        $stmt->bindParam(1, $user_id);
         $stmt->execute();
 
         $this->allRows = $stmt;
     }
 
+    //get user id
+    public function get_user_id($username) {
+
+        $query = "SELECT user_id FROM users WHERE username = ?";
+
+        $stmt = $this->_db->prepare($query);
+        $stmt->bindParam(1, $username);
+        $stmt->execute();
+
+        if($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+            return $row['user_id'];
+        } else {
+
+            return false;
+        }
+    }
+
     //count rows for pagination
     public function countAll() {
 
-        $query = "SELECT id From autosave";
+        $query = "SELECT id From autosave WHERE user_id = ?";
 
         $stmt = $this->_db->prepare($query);
+
+        $username = $_SESSION['username'];
+        $user_id = $this->get_user_id($username);
+
+        $stmt->bindParam(1, $user_id);
         $stmt->execute();
 
         $num = $stmt->rowCount();

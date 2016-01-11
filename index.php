@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 include 'App/Controller/Controller.php';
 include 'public/header.php';
 

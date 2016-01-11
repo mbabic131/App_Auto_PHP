@@ -3,28 +3,30 @@
 <div class="col-md-6 col-md-offset-3">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-	    		<h3 class="panel-title">Please register here</h3>
-	 			</div>
+	    	<h3 class="panel-title">Please register here</h3>
+	 	</div>
+
 	 			<div class="panel-body">
 	    		<form action="" method="post">
 	    			<div class="form-group">
-	    				<input type="text" name="username" id="username" class="form-control input-sm" placeholder="Enter username">
+	    				<input type="text" name="username" id="username" class="form-control" placeholder="Enter username">
 	    			</div>
 
 	    			<div class="row">
 	    				<div class="col-xs-6 col-sm-6 col-md-6">
 	    					<div class="form-group">
-	    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+	    						<input type="password" name="password" id="password" class="form-control" placeholder="Password">
 	    					</div>
 	    				</div>
+
 	    				<div class="col-xs-6 col-sm-6 col-md-6">
 	    					<div class="form-group">
-	    						<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+	    						<input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Confirm Password">
 	    					</div>
 	    				</div>
 	    			</div>
 	    			
-	    			<input type="submit" value="Register" name="submit" class="btn btn-info btn-block">
+	    			<input type="submit" value="Register" name="submit" class="btn btn-lg btn-primary btn-block">
 	    		
 	    		</form>
 	    	</div>
